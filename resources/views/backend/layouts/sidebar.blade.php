@@ -5,8 +5,8 @@
           <a href="{{ url('/admin') }}" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="./assets/img/AdminLTELogo.png"
-              alt="AdminLTE Logo"
+              src="{{ asset('img/AdminLTELogo.png') }}"
+              alt="Elzza"
               class="brand-image opacity-75 shadow"
             />
             <!--end::Brand Image-->
@@ -28,11 +28,11 @@
               data-accordion="false"
               id="navigation"
             >
-              <li class="nav-item menu-open">
+              <li class="nav-item ">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
-                    Dashboard
+                    {{ __('Dashboard') }}
                     <i class="nav-arrow bi bi-chevron-right"></i>
                   </p>
                 </a>
@@ -56,6 +56,16 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('general-settings.index') }}" class="nav-link active">
+                  <i class="nav-icon bi bi-speedometer"></i>
+                  <p>
+                    {{ __('General Settings') }}
+                    
+                  </p>
+                </a>
+                
               </li>
             </ul>
             <!--end::Sidebar Menu-->
