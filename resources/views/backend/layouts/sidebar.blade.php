@@ -5,8 +5,8 @@
           <a href="{{ url('/admin') }}" class="brand-link">
             <!--begin::Brand Image-->
             <img
-              src="{{ asset('img/AdminLTELogo.png') }}"
-              alt="Elzza"
+              src="{{ asset(setting('logo')) }}"
+              alt="{{ setting('site_name') }}"
               class="brand-image opacity-75 shadow"
             />
             <!--end::Brand Image-->

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Models\Backend\GeneralSetting;
+use App\Models\Backend\GeneralSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 

@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin', function () {
         return view('backend.index');
-    })->name('admin'); 
+    })->name('admin');                            
 
     // Replace the existing general_settings route with a resource route
     Route::resource('general-settings', GeneralSettingController::class);
