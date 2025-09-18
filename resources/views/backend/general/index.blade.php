@@ -3,9 +3,9 @@
 @section('main')
 <div class="content-header">
     <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-12">
-                <h3 class="m-0">General Settings</h3>
+        <div class="row mt-2">
+            <div class="col-sm-12 mb-3">
+                <h3 class="m-0">{{ __('General Settings') }}</h3>
             </div>
            
         </div>
@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label" for="site_name">Site Name</label>
+                                <label class="form-label" for="site_name">{{ __('Site Name') }}</label>
                                 <input type="text" class="form-control @error('site_name') is-invalid @enderror" id="site_name" name="site_name" value="{{ old('site_name', $setting->site_name) }}" required>
                                 @error('site_name')
                                     <span class="invalid-feedback">{{ $message }}</span>
@@ -37,7 +37,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="site_email">Site Email</label>
+                                <label class="form-label" for="site_email">{{ __('Site Email') }}</label>
                                 <input type="email" class="form-control @error('site_email') is-invalid @enderror" id="site_email" name="site_email" value="{{ old('site_email', $setting->site_email) }}">
                                 @error('site_email')
                                     <span class="invalid-feedback">{{ $message }}</span>
@@ -45,7 +45,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="site_phone">Site Phone</label>
+                                <label class="form-label" for="site_phone">{{ __('Site Phone') }}</label>
                                 <input type="text" class="form-control @error('site_phone') is-invalid @enderror" id="site_phone" name="site_phone" value="{{ old('site_phone', $setting->site_phone) }}">
                                 @error('site_phone')
                                     <span class="invalid-feedback">{{ $message }}</span>
@@ -53,7 +53,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="site_address">Site Address</label>
+                                <label class="form-label" for="site_address">{{ __('Site Address') }}</label>
                                 <textarea class="form-control @error('site_address') is-invalid @enderror" id="site_address" name="site_address" rows="3">{{ old('site_address', $setting->site_address) }}</textarea>
                                 @error('site_address')
                                     <span class="invalid-feedback">{{ $message }}</span>
@@ -63,11 +63,11 @@
                         
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label" for="logo">Logo</label>
+                                <label class="form-label" for="logo">{{ __('Logo') }}</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input @error('logo') is-invalid @enderror" id="logo" name="logo">
-                                        <label class="custom-file-label" for="logo">Choose file</label>
+                                        <label class="custom-file-label" for="logo">{{ __('Choose file') }}</label>
                                     </div>
                                 </div>
                                 @error('logo')
@@ -81,11 +81,11 @@
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="favicon">Favicon</label>
+                                <label class="form-label" for="favicon">{{ __('Favicon') }}</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input @error('favicon') is-invalid @enderror" id="favicon" name="favicon">
-                                        <label class="custom-file-label" for="favicon">Choose file</label>
+                                        <label class="custom-file-label" for="favicon">{{ __('Choose file') }}</label>
                                     </div>
                                 </div>
                                 @error('favicon')
@@ -103,33 +103,33 @@
                     <!-- Social Media URLs -->
                     <div class="row mt-4">
                         <div class="col-12">
-                            <h5>Social Media Links</h5>
+                            <h5>{{ __('Social Media Links') }}</h5>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label" for="facebook_url">Facebook URL</label>
+                                <label class="form-label" for="facebook_url">{{ __('Facebook URL') }}</label>
                                 <input type="url" class="form-control" id="facebook_url" name="facebook_url" value="{{ old('facebook_url', $setting->facebook_url) }}">
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="twitter_url">Twitter URL</label>
+                                <label class="form-label" for="twitter_url">{{ __('Twitter URL') }}</label>
                                 <input type="url" class="form-control" id="twitter_url" name="twitter_url" value="{{ old('twitter_url', $setting->twitter_url) }}">
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="instagram_url">Instagram URL</label>
+                                <label class="form-label" for="instagram_url">{{ __('Instagram URL') }}</label>
                                 <input type="url" class="form-control" id="instagram_url" name="instagram_url" value="{{ old('instagram_url', $setting->instagram_url) }}">
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-label" for="linkedin_url">LinkedIn URL</label>
+                                <label class="form-label" for="linkedin_url">{{ __('LinkedIn URL') }}</label>
                                 <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" value="{{ old('linkedin_url', $setting->linkedin_url) }}">
                             </div>
                             
                             <div class="form-group">
-                                <label class="form-label" for="youtube_url">YouTube URL</label>
+                                <label class="form-label" for="youtube_url">{{ __('YouTube URL') }}</label>
                                 <input type="url" class="form-control" id="youtube_url" name="youtube_url" value="{{ old('youtube_url', $setting->youtube_url) }}">
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                 </div>
                 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                 </div>
             </form>
         </div>
