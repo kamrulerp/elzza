@@ -1,4 +1,5 @@
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+
+<aside class="app-sidebar bg-white" data-bs-theme="light">
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
@@ -62,6 +63,16 @@
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>
                     {{ __('General Settings') }}
+                    
+                  </p>
+                </a>
+                
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('services.index') }}" class="nav-link active">
+                  <i class="nav-icon bi bi-motherboard"></i>
+                  <p>
+                    {{ __('Services') }}
                     
                   </p>
                 </a>

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,10 +21,10 @@ Route::middleware('auth')->group(function () {
 
     // Replace the existing general_settings route with a resource route
     Route::resource('general-settings', GeneralSettingController::class);
+    
+    // Add service resource routes
+    Route::resource('services', ServiceController::class);
 });
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
