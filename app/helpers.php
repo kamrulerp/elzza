@@ -4,7 +4,7 @@ use App\Models\Backend\GeneralSetting;
 
 if (! function_exists('setting')) {
     /**
-     * Get a setting value from cache or database
+     * Get a setting value with built-in defaults
      *
      * @param string $key
      * @param mixed $default
@@ -12,31 +12,69 @@ if (! function_exists('setting')) {
      */
     function setting($key, $default = null)
     {
-        // Try to get from cached settings first (set in AppServiceProvider)
+        // Define default values for all settings
+        $defaultSettings = [
+            'site_name' => 'My Website',
+            'site_email' => 'info@example.com',
+            'site_phone' => '',
+            'site_address' => '',
+            'logo' => '',
+            'favicon' => '',
+            'facebook_url' => '',
+            'twitter_url' => '',
+            'instagram_url' => '',
+            'linkedin_url' => '',
+            'youtube_url' => '',
+        ];
+
+        // Try to get from cached settings first
         $settings = app('settings', []);
         
         if (isset($settings[$key])) {
             return $settings[$key];
         }
         
-        // Fallback to direct database query if not in cache
+        // Try database query
         try {
             $settingRow = GeneralSetting::first();
-            return $settingRow?->$key ?? $default;
+            
+            if ($settingRow && isset($settingRow->$key)) {
+                return $settingRow->$key;
+            }
         } catch (\Exception $e) {
-            return $default;
+            // Database error, fall through to defaults
         }
+        
+        // Return provided default, or built-in default, or null
+        return $default ?? $defaultSettings[$key] ?? null;
     }
 }
 
 if (! function_exists('settings')) {
     /**
-     * Get all settings as array
+     * Get all settings with defaults
      *
      * @return array
      */
     function settings()
     {
-        return app('settings', []);
+        $defaultSettings = [
+            'site_name' => 'Company Nane',
+            'site_email' => 'info@example.com',
+            'site_phone' => '',
+            'site_address' => '',
+            'logo' => 'https://placehold.co/32x32?text=Logo',
+            'favicon' => '',
+            'facebook_url' => '',
+            'twitter_url' => '',
+            'instagram_url' => '',
+            'linkedin_url' => '',
+            'youtube_url' => '',
+        ];
+
+        $settings = app('settings', []);
+        
+        // Merge with defaults to ensure all keys exist
+        return array_merge($defaultSettings, $settings);
     }
 }
