@@ -78,6 +78,15 @@
                 </a>
                 
               </li>
+              <li class="nav-item">
+                <a href="{{ route('quotations.index') }}" class="nav-link active">
+                  <i class="nav-icon bi bi-file-earmark-text"></i>
+                  <p>
+                    {{ __('Quotations') }}
+                    
+                  </p>
+                </a>
+              </li>
             </ul>
             <!--end::Sidebar Menu-->
           </nav>
