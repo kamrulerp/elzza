@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Backend\Quotation;
+use App\Models\Backend\GeneralSetting;
 use App\Http\Requests\QuotationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -28,10 +29,13 @@ class QuotationController extends Controller
     {
         $quotation = Quotation::create($request->validated());
 
+        $generalSettings = GeneralSetting::first();
+
         // Send confirmation email synchronously (simple, reliable)
         try {
             if (!empty($quotation->email)) {
                 Mail::to($quotation->email)->send(new QuotationMail($quotation));
+                Mail::to($generalSettings->site_email)->send(new QuotationMail($quotation)); // Send copy to site email
                 Log::info('Quotation confirmation email sent', ['quotation_id' => $quotation->id, 'email' => $quotation->email]);
             } else {
                 Log::warning('Quotation created without email, skipping confirmation send', ['quotation_id' => $quotation->id]);
