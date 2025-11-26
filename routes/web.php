@@ -3,6 +3,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GeneralSettingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\ContactController;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +30,7 @@ Route::middleware('auth')->group(function () {
 
     // Add quotation resource routes
     Route::resource('quotations', QuotationController::class);
+    Route::post('/contact', [ContactController::class, 'send']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -35,5 +38,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+Route::prefix('api')
+    ->withoutMiddleware([VerifyCsrfToken::class])
+    ->group(function () {
+        
+        Route::post('/contact', [ContactController::class, 'send']);
+
+    });
 
 require __DIR__.'/auth.php';
